@@ -19,7 +19,7 @@ echo "CONFIG_PACKAGE_luci-theme-argon=y" >> .config
 echo "CONFIG_PACKAGE_luci-app-argon-config=y" >> .config
 
 # Mihomo
-# echo "CONFIG_PACKAGE_luci-app-mihomo=y" >> .config
+echo "CONFIG_PACKAGE_luci-app-mihomo=y" >> .config
 
 # OpenClash
 git clone -b master https://github.com/vernesong/OpenClash.git openclash

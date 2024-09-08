@@ -1,0 +1,14 @@
+remove:
+luci-app-accesscontrol
+luci-app-nlbwmon
+luci-app-upnp
+luci-app-vlmcsd
+luci-app-wol
+add:
+adguardhome
+luci-app-diskman
+luci-app-hd-idle
+luci-app-samba
+luci-app-docker
+luci-app-dockerman
+

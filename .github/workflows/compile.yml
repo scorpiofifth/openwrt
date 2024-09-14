@@ -29,7 +29,7 @@ jobs:
           sudo apt update
           sudo apt install $(cat dependencies) -y
           git clone https://github.com/coolsnowwolf/lede.git openwrt
-          cp -r files openwrt
+          # cp -r files openwrt
           mkdir output
       - name: Deal with feeds
         run: |
@@ -43,7 +43,7 @@ jobs:
           cd openwrt
           cp ../.config .config
           make defconfig
-          cp .config ../output
+          cp .config ../output/config
           make download -j$(nproc)
           make -j$(nproc) || make -j1 V=s
           rm -rf ./bin/targets/*/*/packages

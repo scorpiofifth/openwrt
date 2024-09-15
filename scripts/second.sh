@@ -41,3 +41,8 @@ gunzip clash-linux-arm64-2023.08.17-13-gdcc8d87.gz
 chmod 777 clash*
 mv clash* files/etc/openclash/core/clash_tun
 echo "CONFIG_PACKAGE_luci-app-openclash=y" >> .config
+
+# istore
+echo "CONFIG_PACKAGE_luci-app-store=y" >> .config
+
+

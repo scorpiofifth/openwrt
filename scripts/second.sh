@@ -4,12 +4,6 @@
 git clone https://github.com/esirplayground/luci-app-poweroff.git package/luci-app-poweroff
 echo "CONFIG_PACKAGE_luci-app-poweroff=y" >> .config
 
-# Alist
-# rm -rf feeds/packages/lang/golang
-# git clone https://github.com/sbwml/packages_lang_golang -b 22.x feeds/packages/lang/golang
-# git clone https://github.com/sbwml/luci-app-alist package/alist
-# echo "CONFIG_PACKAGE_luci-app-alist=y" >> .config
-
 # Argon theme
 rm -rf package/feeds/luci/luci-theme-argon
 git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/feeds/luci/luci-theme-argon
@@ -17,9 +11,6 @@ rm -rf package/feeds/luci/luci-app-argon-config
 git clone -b 18.06 https://github.com/jerrykuku/luci-app-argon-config.git package/feeds/luci/luci-app-argon-config
 echo "CONFIG_PACKAGE_luci-theme-argon=y" >> .config
 echo "CONFIG_PACKAGE_luci-app-argon-config=y" >> .config
-
-# Mihomo
-echo "CONFIG_PACKAGE_luci-app-mihomo=y" >> .config
 
 # OpenClash
 git clone -b master https://github.com/vernesong/OpenClash.git openclash
@@ -43,6 +34,6 @@ mv clash* files/etc/openclash/core/clash_tun
 echo "CONFIG_PACKAGE_luci-app-openclash=y" >> .config
 
 # istore
-echo "CONFIG_PACKAGE_luci-app-store=y" >> .config
+# echo "CONFIG_PACKAGE_luci-app-store=y" >> .config
 
 

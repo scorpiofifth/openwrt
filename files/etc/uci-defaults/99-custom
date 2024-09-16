@@ -1,2 +1,2 @@
 # set up the LAN IP address
-uci set network.lan.ipaddr='192.168.100.1'
+# uci set network.lan.ipaddr='192.168.100.1'

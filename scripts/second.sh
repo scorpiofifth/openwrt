@@ -5,10 +5,10 @@ git clone https://github.com/esirplayground/luci-app-poweroff.git package/luci-a
 echo "CONFIG_PACKAGE_luci-app-poweroff=y" >> .config
 
 # Alist
-rm -rf feeds/packages/lang/golang
-git clone https://github.com/sbwml/packages_lang_golang -b 22.x feeds/packages/lang/golang
-git clone https://github.com/sbwml/luci-app-alist package/alist
-echo "CONFIG_PACKAGE_luci-app-alist=y" >> .config
+# rm -rf feeds/packages/lang/golang
+# git clone https://github.com/sbwml/packages_lang_golang -b 22.x feeds/packages/lang/golang
+# git clone https://github.com/sbwml/luci-app-alist package/alist
+# echo "CONFIG_PACKAGE_luci-app-alist=y" >> .config
 
 # Argon theme
 rm -rf package/feeds/luci/luci-theme-argon

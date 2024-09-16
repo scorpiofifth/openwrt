@@ -31,18 +31,18 @@ jobs:
           git clone https://github.com/coolsnowwolf/lede.git openwrt
           [[ -d "files" ]] && cp -r files openwrt
           mkdir output
+          cp .config output/config_before
       - name: Deal with feeds
         run: |
           cd openwrt
           ../scripts/first.sh
           ./scripts/feeds update -a
           ./scripts/feeds install -a
+          cp ../.config .config
           ../scripts/second.sh
       - name: Colect config file
         run: | 
-          cp .config output/config_before
           cd openwrt
-          cp ../.config .config
           make defconfig
           ./scripts/diffconfig.sh > ../output/diffconfig
           cp .config ../output/config_after

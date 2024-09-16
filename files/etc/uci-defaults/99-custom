@@ -1,0 +1,22 @@
+#!/bin/ash
+
+uci -q batch << EOI
+set network.lan.ipaddr='192.168.100.1'
+delete network.wan6
+delete dhcp.lan.dhcpv6
+delete dhcp.lan.ra
+set dhcp.@dnsmasq[0].filter_aaaa='1'
+set network.lan.ifname='eth1 eth2 eth3'
+set network.wan.ifname='eth0'
+set wireless.radio0.country='CN'
+set wireless.radio0.channel='auto'
+set wireless.radio0.band='2g'
+set wireless.default_radio0.encryption='psk-mixed'
+set wireless.default_radio0.key='scorpiofifth'
+set system.led_wan.dev='eth0'
+EOI
+
+# delete dhcp.lan.ra_management
+# delete dhcp.@dnsmasq[0].boguspriv
+# delete dhcp.@dnsmasq[0].filterwin2k
+# delete dhcp.@dnsmasq[0].nonegcache

@@ -5,6 +5,7 @@ set network.lan.ipaddr='192.168.100.1'
 delete network.wan6
 delete dhcp.lan.dhcpv6
 delete dhcp.lan.ra
+delete network.globals.ula_prefix
 set dhcp.@dnsmasq[0].filter_aaaa='1'
 set network.lan.ifname='eth1 eth2 eth3'
 set network.wan.ifname='eth0'
@@ -17,6 +18,12 @@ set vsftpd.local.root='/'
 set vsftpd.global.dotfile='1'
 set vsftpd.global.lsrecurse='1'
 set samba.@samba[0].autoshare='0'
+set cpufreq.cpufreq.governor0='powersave'
+set hd-idle.@hd-idle[0]=hd-idle
+set hd-idle.@hd-idle[0].idle_time_unit='minutes'
+set hd-idle.@hd-idle[0].idle_time_interval='3'
+set hd-idle.@hd-idle[0].disk='sda'
+set hd-idle.@hd-idle[0].enabled='1'
 EOI
 
 # delete dhcp.lan.ra_management
@@ -27,4 +34,4 @@ EOI
 # set wireless.radio0.channel='auto'
 # set wireless.radio0.band='2g'
 # set wireless.default_radio0.encryption='psk-mixed'
-set wireless.default_radio0.key='scorpiofifth'
+# set wireless.default_radio0.key='scorpiofifth'

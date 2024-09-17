@@ -23,7 +23,7 @@ set hd-idle.@hd-idle[0]=hd-idle
 set hd-idle.@hd-idle[0].idle_time_unit='minutes'
 set hd-idle.@hd-idle[0].idle_time_interval='3'
 set hd-idle.@hd-idle[0].disk='sda'
-set hd-idle.@hd-idle[0].enabled='1'
+set hd-idle.@hd-idle[0].enabled='0'
 EOI
 
 # delete dhcp.lan.ra_management

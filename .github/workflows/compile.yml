@@ -6,7 +6,7 @@ on:
       - .config
       - .github/workflows/compile.yml
       - scripts/*
-      - files/*
+      - files/**
 jobs:
   build: 
     runs-on: ubuntu-22.04

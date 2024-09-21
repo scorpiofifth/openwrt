@@ -30,8 +30,8 @@ sed -i 's/US/CN/' /lib/wifi/mac80211.sh
 sed -i 's/${mode_band}/2g/' /lib/wifi/mac80211.sh
 sed -i 's/none/psk-mixed\n\t\t\tset wireless.default_radio${devidx}.key=scorpiofifth/' /lib/wifi/mac80211.sh
 
-device=`mount | grep "/rom" | awk '{print $1}'`
-device=${device:0:12}
-firstsector=$(( `echo -e "p\nq\n" | fdisk $device | grep 'p2' | awk '{print $3}'` + 1 ))
-echo -e "n\np\n3\n$firstsector\n\nw\n" | fdisk $device
-echo "y" | mkfs.ext4 ${device}p3
+# device=`mount | grep "/rom" | awk '{print $1}'`
+# device=${device:0:12}
+# firstsector=$(( `echo -e "p\nq\n" | fdisk $device | grep 'p2' | awk '{print $3}'` + 1 ))
+# echo -e "n\np\n3\n$firstsector\n\nw\n" | fdisk $device
+# echo "y" | mkfs.ext4 ${device}p3

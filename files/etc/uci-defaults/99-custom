@@ -26,12 +26,6 @@ set hd-idle.@hd-idle[0].disk='sda'
 set hd-idle.@hd-idle[0].enabled='0'
 EOI
 
-# delete dhcp.lan.ra_management
-# delete dhcp.@dnsmasq[0].boguspriv
-# delete dhcp.@dnsmasq[0].filterwin2k
-# delete dhcp.@dnsmasq[0].nonegcache
-# set wireless.radio0.country='CN'
-# set wireless.radio0.channel='auto'
-# set wireless.radio0.band='2g'
-# set wireless.default_radio0.encryption='psk-mixed'
-# set wireless.default_radio0.key='scorpiofifth'
+sed -i 's/US/CN/' /lib/wifi/mac80211.sh
+sed -i 's/${mode_band}/2g/' /lib/wifi/mac80211.sh
+sed -i 's/none/psk-mixed\n\t\t\tsetwireless.default_radio0.key=\'scorpiofifth\'/' /lib/wifi/mac80211.sh

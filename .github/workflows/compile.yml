@@ -33,7 +33,6 @@ jobs:
           mkdir output
           cp -r files openwrt
           cp .config output/config-ori
-          cp .config openwrt 
       - name: Deal with feeds
         run: | 
           cd openwrt

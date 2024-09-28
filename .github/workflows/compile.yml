@@ -26,26 +26,27 @@ jobs:
         uses: actions/checkout@v4
       - name: Prepare
         run: | 
+          df -h
           sudo apt update
           sudo apt install $(cat dependencies) -y
           git clone https://github.com/coolsnowwolf/lede.git openwrt
-          cp -r files openwrt
           mkdir output
-          cp .config output/config_before
+          cp -r files openwrt
+          cp .config output/config-ori
+          cp .config openwrt 
       - name: Deal with feeds
-        run: |
+        run: | 
           cd openwrt
           ../scripts/first.sh
           ./scripts/feeds update -a
           ./scripts/feeds install -a
-          cp ../.config .config
           ../scripts/second.sh
       - name: Colect config file
         run: | 
           cd openwrt
           make defconfig
-          ./scripts/diffconfig.sh > ../output/diffconfig
-          cp .config ../output/config_after
+          ./scripts/diffconfig.sh > ../output/config-diff
+          cp .config ../output/config-last
       - name: Upload config file
         uses: actions/upload-artifact@v4
         with:
@@ -58,6 +59,7 @@ jobs:
           make -j$(nproc) || make -j1 V=s
           rm -rf ./bin/targets/*/*/packages
           cp bin/targets/*/*/* ../output
+          df -h
       - name: Upload firmware
         uses: actions/upload-artifact@v4
         with:

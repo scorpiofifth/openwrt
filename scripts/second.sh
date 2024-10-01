@@ -10,6 +10,11 @@ git clone -b 18.06 https://github.com/jerrykuku/luci-app-argon-config.git packag
 echo "CONFIG_PACKAGE_luci-theme-argon=y" >> .config
 echo "CONFIG_PACKAGE_luci-app-argon-config=y" >> .config
 
+# Passwall
+git clone https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-passwall
+git clone https://github.com/xiaorouji/openwrt-passwall-packages.git package/openwrt-passwall-packages
+echo "CONFIG_PACKAGE_luci-app-passwall=y" >> .config
+
 # OpenClash
 mkdir package/luci-app-openclash
 cd package/luci-app-openclash
@@ -23,22 +28,20 @@ pushd luci-app-openclash/tools/po2lmo
 make && sudo make install
 popd
 cd ../..
+echo "CONFIG_PACKAGE_luci-app-openclash=y" >> .config
 
-# OpenClash core
+# Download clash core
 mkdir -p files/etc/openclash/core/
+echo "Download clash"
 wget https://raw.githubusercontent.com/vernesong/OpenClash/core/master/dev/clash-linux-arm64.tar.gz
 tar -zxf clash-linux-arm64.tar.gz && rm -f clash-linux-arm64.tar.gz
 chmod 777 clash
 mv clash files/etc/openclash/core/clash
+echo "Download clash_meta"
 wget https://raw.githubusercontent.com/vernesong/OpenClash/core/master/meta/clash-linux-arm64.tar.gz
 tar -zxf clash-linux-arm64.tar.gz && rm -f clash-linux-arm64.tar.gz
 chmod 777 clash
 mv clash files/etc/openclash/core/clash_meta
-wget https://raw.githubusercontent.com/vernesong/OpenClash/core/master/premium/clash-linux-arm64-2023.08.17-13-gdcc8d87.gz
-gunzip clash-linux-arm64-2023.08.17-13-gdcc8d87.gz
-chmod 777 clash*
-mv clash* files/etc/openclash/core/clash_tun
-echo "CONFIG_PACKAGE_luci-app-openclash=y" >> .config
 
 # iStore
 echo "CONFIG_PACKAGE_luci-app-store=y" >> .config

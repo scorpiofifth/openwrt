@@ -1,6 +1,7 @@
 #!/bin/bash
 
-cp ../.config .
+# cp ../.config .
+cp ../diffconfig-last .config
 
 # Argon theme
 rm -rf package/feeds/luci/luci-theme-argon

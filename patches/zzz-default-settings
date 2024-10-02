@@ -1,0 +1,64 @@
+2a3,11
+> uci delete network.wan6
+> uci delete dhcp.lan.dhcpv6
+> uci delete dhcp.lan.ra
+> uci delete network.globals.ula_prefix
+> uci set network.lan.ipaddr='192.168.100.1'
+> uci set dhcp.@dnsmasq[0].filter_aaaa='1'
+> uci set network.lan.ifname='eth1 eth2 eth3'
+> uci set network.wan.ifname='eth0'
+> 
+4c13,39
+< uci commit luci
+---
+> uci set system.led_wan.dev='eth0'
+> uci set system.@system[0].timezone='CST-8'
+> uci set system.@system[0].zonename='Asia/Shanghai'
+> 
+> uci delete system.ntp.server
+> uci add_list system.ntp.server='time.ustc.edu.cn'
+> uci add_list system.ntp.server='ntp1.aliyun.com'
+> uci add_list system.ntp.server='ntp.tencent.com'
+> uci add_list system.ntp.server='ntp.ntsc.ac.cn'
+> 
+> uci set fstab.@global[0].anon_mount='0'
+> uci set fstab.@global[0].auto_swap='0'
+> uci set fstab.@global[0].auto_mount='0'
+> uci set fstab.@global[0].anon_mount='0'
+> 
+> uci set vsftpd.local.root='/'
+> uci set vsftpd.global.dotfile='1'
+> uci set vsftpd.global.lsrecurse='1'
+> uci set samba.@samba[0].autoshare='0'
+> 
+> uci set cpufreq.cpufreq.governor0='powersave'
+> 
+> uci set hd-idle.@hd-idle[0]=hd-idle
+> uci set hd-idle.@hd-idle[0].idle_time_unit='minutes'
+> uci set hd-idle.@hd-idle[0].idle_time_interval='3'
+> uci set hd-idle.@hd-idle[0].disk='sda'
+> uci set hd-idle.@hd-idle[0].enabled='0'
+6,16c41
+< uci -q batch <<-EOF
+< 	set system.@system[0].timezone='CST-8'
+< 	set system.@system[0].zonename='Asia/Shanghai'
+< 
+< 	delete system.ntp.server
+< 	add_list system.ntp.server='ntp1.aliyun.com'
+< 	add_list system.ntp.server='ntp.tencent.com'
+< 	add_list system.ntp.server='ntp.ntsc.ac.cn'
+< 	add_list system.ntp.server='time.ustc.edu.cn'
+< EOF
+< uci commit system
+---
+> uci set openclash.config.enable_meta_core='1'
+18,19c43
+< uci set fstab.@global[0].anon_mount=1
+< uci commit fstab
+---
+> uci commit
+51a76,79
+> sed -i 's/US/CN/' /lib/wifi/mac80211.sh
+> sed -i 's/${mode_band}/2g/' /lib/wifi/mac80211.sh
+> sed -i 's/${channel}/auto/' /lib/wifi/mac80211.sh
+> sed -i 's/none/psk-mixed\n\t\t\tset wireless.default_radio${devidx}.key=scorpiofifth/' /lib/wifi/mac80211.sh

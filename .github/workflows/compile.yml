@@ -3,11 +3,10 @@ on:
   workflow_dispatch:
   push:
     paths:
-      - .config
-      - diffconfig-last
-      - .github/workflows/compile.yml
+      - config/**
       - scripts/*
       - files/**
+      - .github/workflows/compile.yml
 jobs:
   build: 
     runs-on: ubuntu-22.04
@@ -29,12 +28,11 @@ jobs:
         run: | 
           df -h
           sudo apt update
-          sudo apt install $(cat dependencies) -y
+          sudo apt install $(cat other/dependencies) -y
           git clone https://github.com/coolsnowwolf/lede.git openwrt
           mkdir output
           cp -r files openwrt
-          # cp .config output/config-ori
-          cp diffconfig-last output/diffconfig-ori
+          cp config/diffconfig-last output/diffconfig-ori
       - name: Deal with feeds
         run: | 
           cd openwrt
@@ -42,11 +40,11 @@ jobs:
           ./scripts/feeds update -a
           ./scripts/feeds install -a
           ../scripts/second.sh
+          ../scripts/patch.sh
       - name: Colect config file
         run: | 
           cd openwrt
           make defconfig
-          # ./scripts/diffconfig.sh > ../output/config-diff
           ./scripts/diffconfig.sh > ../output/diffconfig-last
           cp .config ../output/config-last
       - name: Upload config file

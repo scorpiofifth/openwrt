@@ -34,12 +34,12 @@ echo "CONFIG_PACKAGE_luci-app-openclash=y" >> .config
 # Download clash core
 mkdir -p files/etc/openclash/core/
 echo "Download clash"
-wget https://raw.githubusercontent.com/vernesong/OpenClash/core/master/dev/clash-linux-arm64.tar.gz
+wget -nv https://raw.githubusercontent.com/vernesong/OpenClash/core/master/dev/clash-linux-arm64.tar.gz
 tar -zxf clash-linux-arm64.tar.gz && rm -f clash-linux-arm64.tar.gz
 chmod 777 clash
 mv clash files/etc/openclash/core/clash
 echo "Download clash_meta"
-wget https://raw.githubusercontent.com/vernesong/OpenClash/core/master/meta/clash-linux-arm64.tar.gz
+wget -nv https://raw.githubusercontent.com/vernesong/OpenClash/core/master/meta/clash-linux-arm64.tar.gz
 tar -zxf clash-linux-arm64.tar.gz && rm -f clash-linux-arm64.tar.gz
 chmod 777 clash
 mv clash files/etc/openclash/core/clash_meta

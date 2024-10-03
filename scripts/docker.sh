@@ -1,11 +1,13 @@
 #!/bin/bash
 
-wget https://github.com/scorpiofifth/openwrt/releases/download/docker/memos.tar -O files/root/docker/memos.tar
+ADDRESS="https://github.com/scorpiofifth/openwrt/releases/download/docker"
 
-wget https://github.com/scorpiofifth/openwrt/releases/download/docker/alist.tar -O files/root/docker/alist-ffmpeg.tar
+wget -nv "$ADDRESS/memos.tar" -O files/root/docker/memos.tar
 
-wget https://github.com/scorpiofifth/openwrt/releases/download/docker/librespeed.tar -O files/root/docker/librespeed.tar
+wget -nv "$ADDRESS/alist.tar" -O files/root/docker/alist-ffmpeg.tar
 
-wget https://github.com/scorpiofifth/openwrt/releases/download/docker/it-tools.tar -O files/root/docker/it-tools.tar
+wget -nv "$ADDRESS/librespeed.tar" -O files/root/docker/librespeed.tar
 
-wget https://github.com/scorpiofifth/openwrt/releases/download/docker/perlite.tar -O files/root/docker/perlite.tar
+wget -nv "$ADDRESS/it-tools.tar" -O files/root/docker/it-tools.tar
+
+wget -nv "$ADDRESS/perlite.tar" -O files/root/docker/perlite.tar

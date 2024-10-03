@@ -11,10 +11,10 @@ echo "CONFIG_PACKAGE_luci-theme-argon=y" >> .config
 echo "CONFIG_PACKAGE_luci-app-argon-config=y" >> .config
 
 # Passwall
-git clone https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-passwall
-git clone https://github.com/xiaorouji/openwrt-passwall-packages.git package/openwrt-passwall-packages
-echo "CONFIG_PACKAGE_luci-app-passwall=y" >> .config
-echo "CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Hysteria=y" >> .config
+# git clone https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-passwall
+# git clone https://github.com/xiaorouji/openwrt-passwall-packages.git package/openwrt-passwall-packages
+# echo "CONFIG_PACKAGE_luci-app-passwall=y" >> .config
+# echo "CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Hysteria=y" >> .config
 
 # OpenClash
 mkdir package/luci-app-openclash

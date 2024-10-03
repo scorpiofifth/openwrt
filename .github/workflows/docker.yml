@@ -1,0 +1,41 @@
+name: Docker
+on:
+  workflow_dispatch:
+  push:
+    paths: .github/workflows/docker.yml
+  schedule:
+    - cron: '23 23 * * 1'
+jobs:
+  docker:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Download
+        run: | 
+          mkdir output
+
+          # https://github.com/usememos/memos
+          docker pull --platform arm64 neosmemo/memos:stable
+          docker save neosmemo/memos > output/memos.tar
+          
+          # https://github.com/alist-org/alist
+          docker pull --platform arm64 xhofe/alist:latest-ffmpeg
+          docker save xhofe/alist > output/alist-ffmpeg.tar
+          
+          # https://github.com/librespeed/speedtest
+          docker pull --platform arm64 linuxserver/librespeed:latest
+          docker save linuxserver/librespeed > output/librespeed.tar
+          
+          # https://github.com/CorentinTh/it-tools
+          docker pull --platform arm64 corentinth/it-tools:latest
+          docker save corentinth/it-tools > output/it-tools.tar
+          
+          # https://github.com/secure-77/Perlite
+          docker pull --platform arm64 sec77/perlite:latest
+          docker save sec77/perlite > output/perlite.tar
+      - name: Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: output/*
+          tag_name: docker

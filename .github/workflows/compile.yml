@@ -4,7 +4,7 @@ on:
   push:
     paths:
       - config/**
-      - scripts/*
+      - scripts/**
       - files/**
       - .github/workflows/compile.yml
 jobs:
@@ -33,14 +33,15 @@ jobs:
           mkdir output
           cp -r files openwrt
           cp config/diffconfig-last output/diffconfig-ori
-      - name: Deal with feeds
+      - name: Run scripts
         run: | 
           cd openwrt
-          ../scripts/first.sh
+          ../scripts/feeds-before.sh
           ./scripts/feeds update -a
           ./scripts/feeds install -a
-          ../scripts/second.sh
+          ../scripts/feeds-after.sh
           ../scripts/patch.sh
+          ../scripts/docker.sh
       - name: Colect config file
         run: | 
           cd openwrt

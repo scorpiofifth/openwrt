@@ -3,8 +3,6 @@ on:
   workflow_dispatch:
   push:
     paths: .github/workflows/docker.yml
-  schedule:
-    - cron: '23 23 * * 1'
 jobs:
   docker:
     runs-on: ubuntu-22.04

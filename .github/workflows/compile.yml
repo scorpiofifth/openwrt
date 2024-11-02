@@ -45,7 +45,7 @@ jobs:
         run: | 
           cd openwrt
           make defconfig
-          ./scripts/diffconfig.sh > ../output/diffconfig-last
+          ./scripts/diffconfig.sh | tee ../output/diffconfig-last
           cp .config ../output/config-last
       - name: Upload config file
         uses: actions/upload-artifact@v4

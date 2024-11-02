@@ -1,4 +1,4 @@
-name: Compile(Origin)
+name: Compile(Tiny)
 on: workflow_dispatch
 jobs:
   build: 
@@ -13,7 +13,7 @@ jobs:
           sudo apt install $(cat other/dependencies) -y
           git clone https://github.com/coolsnowwolf/lede.git openwrt
           mkdir output
-          cp config/diffconfig-ori output/diffconfig-ori
+          cp config/diffconfig-tiny output/diffconfig-ori
       - name: Run scripts
         run: | 
           cd openwrt
@@ -22,14 +22,14 @@ jobs:
       - name: Colect config file
         run: | 
           cd openwrt
-          cp ../config/diffconfig-ori .config
+          cp ../config/diffconfig-tiny .config
           make defconfig
           ./scripts/diffconfig.sh | tee ../output/diffconfig-last
           cp .config ../output/config-last
       - name: Upload config file
         uses: actions/upload-artifact@v4
         with:
-          name: config-origin
+          name: config-tiny
           path: output
       - name: Compile
         run: | 
@@ -42,7 +42,5 @@ jobs:
       - name: Upload firmware
         uses: actions/upload-artifact@v4
         with:
-          name: firmware-origin
+          name: firmware-tiny
           path: output
-
-

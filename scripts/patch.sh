@@ -26,12 +26,6 @@ uci set samba.@samba[0].autoshare='0'
 
 uci set cpufreq.cpufreq.governor0='powersave'
 
-uci set hd-idle.@hd-idle[0]=hd-idle
-uci set hd-idle.@hd-idle[0].idle_time_unit='minutes'
-uci set hd-idle.@hd-idle[0].idle_time_interval='3'
-uci set hd-idle.@hd-idle[0].disk='sda'
-uci set hd-idle.@hd-idle[0].enabled='0'
-
 uci commit
 
 sed -i 's/US/CN/' /lib/wifi/mac80211.sh

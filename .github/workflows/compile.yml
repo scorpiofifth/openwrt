@@ -2,10 +2,10 @@ name: Compile
 on:
   workflow_dispatch:
   push:
+    branches:
+      master
     paths:
-      - config/**
-      - scripts/**
-      - files/**
+      - config/diffconfig-last
       - .github/workflows/compile.yml
 jobs:
   build: 
@@ -40,7 +40,7 @@ jobs:
           ./scripts/feeds update -a
           ./scripts/feeds install -a
           ../scripts/feeds-after.sh
-          # ../scripts/patch.sh
+          ../scripts/patch.sh
       - name: Colect config file
         run: | 
           cd openwrt
@@ -65,5 +65,3 @@ jobs:
         with:
           name: firmware
           path: output
-
-

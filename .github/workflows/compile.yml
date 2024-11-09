@@ -31,7 +31,6 @@ jobs:
           sudo apt install $(cat other/dependencies) -y
           git clone https://github.com/coolsnowwolf/lede.git openwrt
           mkdir output
-          # cp -r files openwrt
           cp config/diffconfig-last output/diffconfig-ori
       - name: Run scripts
         run: | 

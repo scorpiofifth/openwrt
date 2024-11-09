@@ -1,6 +1,7 @@
 #!/bin/bash
 # This script will run in the OpenWRT source folder.
 
+[[ -d "../files" ]] && cp ../files .
 cp ../config/diffconfig-last .config
 
 # OpenClash

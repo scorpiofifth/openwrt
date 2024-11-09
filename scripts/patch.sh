@@ -22,9 +22,6 @@ uci set fstab.@global[0].anon_mount='0'
 uci set vsftpd.local.root='/'
 uci set vsftpd.global.dotfile='1'
 uci set vsftpd.global.lsrecurse='1'
-uci set samba.@samba[0].autoshare='0'
-
-uci set cpufreq.cpufreq.governor0='powersave'
 
 uci commit
 

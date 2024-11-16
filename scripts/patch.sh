@@ -1,17 +1,10 @@
 #!/bin/bash
 sed -i '$d' package/lean/default-settings/files/zzz-default-settings
 
-cat << EOF >> package/lean/default-settings/files/zzz-default-settings
-uci delete dhcp.lan.dhcpv6
-uci delete dhcp.lan.ra
-uci set dhcp.@dnsmasq[0].filter_aaaa='1'
- 
-uci delete network.wan6
-uci delete network.globals.ula_prefix
+cat << EOF >> package/lean/default-settings/files/zzz-default-settings 
 uci set network.lan.ipaddr='192.168.100.1'
 uci set network.wan.device='eth0'
 uci set network.@device[0].ports='eth1' 'eth2' 'eth3'
-uci set network.@device[0].ipv6='0'
 
 uci set system.led_wan.dev='eth0'
 

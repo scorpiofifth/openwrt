@@ -5,6 +5,7 @@
 cp ../config/diffconfig-last .config
 
 # OpenClash
+rm -rf feeds/luci/applications/luci-app-openclash
 mkdir package/luci-app-openclash
 cd package/luci-app-openclash
 git init

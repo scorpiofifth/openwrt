@@ -1,10 +1,11 @@
 #!/bin/bash
 # This script will run in the OpenWRT source folder.
 
-[[ -d "../files" ]] && cp ../files .
+# [[ -d "../files" ]] && cp ../files .
 cp ../config/diffconfig-last .config
 
 # OpenClash
+echo "CONFIG_PACKAGE_luci-app-openclash=y" >> .config
 rm -rf feeds/luci/applications/luci-app-openclash
 mkdir package/luci-app-openclash
 cd package/luci-app-openclash
@@ -18,7 +19,6 @@ pushd luci-app-openclash/tools/po2lmo
 make && sudo make install
 popd
 cd ../..
-echo "CONFIG_PACKAGE_luci-app-openclash=y" >> .config
 
 # Download clash core
 mkdir -p files/etc/openclash/core/
